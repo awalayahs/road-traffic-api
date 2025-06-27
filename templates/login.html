@@ -7,9 +7,21 @@
 <body>
     <div class="container">
         <h2>Login</h2>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="flash">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
         {% if error %}
             <p class="error">{{ error }}</p>
         {% endif %}
+
         <form method="POST">
             <label>Username:</label><br>
             <input type="text" name="username" required><br><br>
@@ -20,5 +32,16 @@
             <button type="submit">Login</button>
         </form>
     </div>
+
+    <script>
+        setTimeout(function() {
+            const flash = document.querySelector('.flash');
+            if (flash) {
+                flash.style.transition = 'opacity 0.5s ease';
+                flash.style.opacity = '0';
+                setTimeout(() => flash.remove(), 500);
+            }
+        }, 4000);
+    </script>
 </body>
 </html>
