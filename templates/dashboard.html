@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Prediction Result</h2>
+            <a href="/logout" class="logout">Logout</a>
+        </div>
+        <p><strong>Predicted Severity:</strong> {{ result }}</p>
+        <a href="/download-pdf" class="btn">Download PDF Report</a>
+        <br><br>
+        <a href="/form" class="btn">Try Another Prediction</a>
+    </div>
+</body>
+</html>

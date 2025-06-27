@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predict Accident Severity</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Accident Severity Prediction</h2>
+            <a href="/logout" class="logout">Logout</a>
+        </div>
+        <form action="/predict" method="POST">
+            <label>Age Band of Driver</label>
+            <select name="Age_band_of_driver" required>
+                <option value="">Select</option>
+                <option>Under 18</option>
+                <option>18-30</option>
+                <option>31-50</option>
+                <option>Over 51</option>
+            </select>
+
+            <label>Sex of Driver</label>
+            <select name="Sex_of_driver" required>
+                <option value="">Select</option>
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+
+            <label>Educational Level</label>
+            <select name="Educational_level" required>
+                <option value="">Select</option>
+                <option>Illiterate</option>
+                <option>Junior high school</option>
+                <option>High school</option>
+                <option>Above high school</option>
+                <option>Unknown</option>
+            </select>
+
+            <label>Vehicle Driver Relation</label>
+            <select name="Vehicle_driver_relation" required>
+                <option value="">Select</option>
+                <option>Owner</option>
+                <option>Employee</option>
+                <option>Unknown</option>
+            </select>
+
+            <label>Driving Experience</label>
+            <select name="Driving_experience" required>
+                <option value="">Select</option>
+                <option>Below 1yr</option>
+                <option>1-2yr</option>
+                <option>2-5yr</option>
+                <option>5-10yr</option>
+                <option>Above 10yr</option>
+                <option>Unknown</option>
+            </select>
+
+            <label>Lanes or Medians</label>
+            <select name="Lanes_or_Medians" required>
+                <option value="">Select</option>
+                <option>Undivided Two way</option>
+                <option>One way</option>
+                <option>other</option>
+                <option>Unknown</option>
+            </select>
+
+            <label>Types of Junction</label>
+            <select name="Types_of_Junction" required>
+                <option value="">Select</option>
+                <option>No junction</option>
+                <option>Y Shape</option>
+                <option>Crossing</option>
+                <option>Unknown</option>
+            </select>
+
+            <label>Road Surface Type</label>
+            <select name="Road_surface_type" required>
+                <option value="">Select</option>
+                <option>Asphalt roads</option>
+                <option>Earth roads</option>
+                <option>Gravel roads</option>
+                <option>Unknown</option>
+            </select>
+
+            <label>Light Conditions</label>
+            <select name="Light_conditions" required>
+                <option value="">Select</option>
+                <option>Daylight</option>
+                <option>Darkness - lights lit</option>
+                <option>Darkness - no lighting</option>
+                <option>Unknown</option>
+            </select>
+
+            <label>Weather Conditions</label>
+            <select name="Weather_conditions" required>
+                <option value="">Select</option>
+                <option>Normal</option>
+                <option>Raining</option>
+                <option>Fog</option>
+                <option>Windy</option>
+                <option>Other</option>
+                <option>Unknown</option>
+            </select>
+
+            <label>Type of Collision</label>
+            <select name="Type_of_collision" required>
+                <option value="">Select</option>
+                <option>Vehicle with vehicle collision</option>
+                <option>Collision with roadside objects</option>
+                <option>Collision with parked vehicles</option>
+                <option>Collision with animals</option>
+                <option>Other</option>
+            </select>
+
+            <label>Vehicle Movement</label>
+            <select name="Vehicle_movement" required>
+                <option value="">Select</option>
+                <option>Going straight</option>
+                <option>Turning left</option>
+                <option>Turning right</option>
+                <option>U-Turn</option>
+                <option>Overtaking</option>
+                <option>Moving Backward</option>
+                <option>Changing lane to the left</option>
+                <option>Changing lane to the right</option>
+            </select>
+
+            <label>Pedestrian Movement</label>
+            <select name="Pedestrian_movement" required>
+                <option value="">Select</option>
+                <option>Not a Pedestrian</option>
+                <option>Walking along roadside</option>
+                <option>Crossing</option>
+                <option>Unknown</option>
+            </select>
+
+            <label>Cause of Accident</label>
+            <select name="Cause_of_accident" required>
+                <option value="">Select</option>
+                <option>Overloading</option>
+                <option>Overspeed</option>
+                <option>Overtaking</option>
+                <option>Changing lane to the left</option>
+                <option>Changing lane to the right</option>
+                <option>Moving Backward</option>
+                <option>Other</option>
+                <option>Unknown</option>
+            </select>
+
+            <button type="submit">Predict Severity</button>
+        </form>
+    </div>
+</body>
+</html>
