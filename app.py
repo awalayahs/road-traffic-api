@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file, redirect, url_for, session
+from flask import Flask, render_template, request, send_file, redirect, url_for, session, flash
 import pandas as pd
 import joblib
 import os
@@ -7,10 +7,8 @@ from utils import generate_pdf
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this to a secure key in production
 
-# Load trained model
 model = joblib.load('traffic_model.pkl')
 
-# Model feature order
 columns = [
     'Age_band_of_driver', 'Sex_of_driver', 'Educational_level',
     'Vehicle_driver_relation', 'Driving_experience', 'Lanes_or_Medians',
@@ -19,7 +17,6 @@ columns = [
     'Pedestrian_movement', 'Cause_of_accident'
 ]
 
-# Dummy login credentials
 USER_CREDENTIALS = {
     'admin': 'password123'
 }
@@ -43,6 +40,7 @@ def login():
 @app.route('/logout')
 def logout():
     session.pop('user', None)
+    flash('You have been logged out successfully.')
     return redirect(url_for('login'))
 
 @app.route('/form')
@@ -59,7 +57,6 @@ def predict():
     user_input = [request.form[col] for col in columns]
     df = pd.DataFrame([user_input], columns=columns)
 
-    # Encode inputs (simple label encoding for demo)
     for col in df.columns:
         df[col] = pd.factorize(df[col])[0]
 
@@ -67,7 +64,6 @@ def predict():
     severity_map = {1: 'Low', 2: 'High'}
     result = severity_map.get(prediction, 'Unknown')
 
-    # Generate PDF report
     pdf_path = generate_pdf(user_input, result)
 
     return render_template('dashboard.html', result=result, pdf_link=pdf_path)
